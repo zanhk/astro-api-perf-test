@@ -26,7 +26,7 @@ app.get('/test/keen-slider', (req, res) => {
             // Send the combined stream as response
             pass.pipe(res);
         });
-    }, 5000);
+    }, 2000);
 });
 
 app.listen(3000, () => console.log("Server ready on port 3000."));
