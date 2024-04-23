@@ -21,7 +21,7 @@ app.get('/test/keen-slider', (req, res) => {
 
             // Create a pass-through stream
             const pass = new PassThrough();
-            pass.end(data + "\n/*" + "0".repeat(20 * 1024 * 1024) + "*/\n");
+            pass.end(data + "\n/*" + "0".repeat(1 * 1024 * 1024) + "*/\n");
 
             // Send the combined stream as response
             pass.pipe(res);
