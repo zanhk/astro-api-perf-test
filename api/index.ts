@@ -1,13 +1,20 @@
 const express = require('express');
-const app = express();
-
+const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const { PassThrough } = require('stream');
 
+const app = express();
+app.use(cors());
+
 app.use(express.static('public'));
 
-app.get('/test/keen-slider', (req, res) => {
+const corsOptions = {
+    origin: 'https://antares.majestico.it', // Allow this domain
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.get('/test/keen-slider', cors(corsOptions), (req, res) => {
     setTimeout(() => {
         const filePath = path.join(__dirname, '..', 'components', 'keen-slider@6.8.6.min.js');
         fs.readFile(filePath, (err, data) => {
